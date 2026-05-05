@@ -23,11 +23,11 @@ const SITE_CONFIG = {
     communityName: 'Blood on the Clocktower',
 
     // Minimum games a player needs to appear on the leaderboard
-    minGamesForLeaderboard: 1,
+    minGamesForLeaderboard: 10,
 
     // ELO settings
     defaultRating: 1500,    // Starting ELO for new players
-    kFactor: 32,            // How much each game affects ratings (higher = more volatile)
+    kFactor: 16,            // How much each game affects ratings (higher = more volatile)
 };
 
 // Export for use in other modules
