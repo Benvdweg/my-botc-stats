@@ -12,8 +12,8 @@ const SITE_CONFIG = {
     // Get these from: Supabase Dashboard > Settings > API
     // Leave as-is to use demo mode with sample data.
 
-    supabaseUrl: 'YOUR_SUPABASE_URL',           // e.g., 'https://abcdefgh.supabase.co'
-    supabaseAnonKey: 'YOUR_SUPABASE_ANON_KEY',   // The "anon public" key
+    supabaseUrl: 'https://zovrdisqarvuegdbuucp.supabase.co',           // e.g., 'https://abcdefgh.supabase.co'
+    supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpvdnJkaXNxYXJ2dWVnZGJ1dWNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NzA2NDAsImV4cCI6MjA5MzU0NjY0MH0.2lE21locBSESl34HHFkgww99hyFdRkzOalF8ms2SXIs',   // The "anon public" key
 
     // ==========================================
     // OPTIONAL: Customize Your Site
