@@ -835,7 +835,7 @@ function showGameDetail(game) {
     const modal = document.getElementById('game-detail-modal');
     if (!modal || !game) return;
 
-    document.getElementById('game-detail-title').textContent = `Game #${game.game_id}`;
+    document.getElementById('game-detail-title').textContent = game.episode_title || `Game #${game.game_id}`;
     document.getElementById('game-detail-script').textContent = game.game_mode || 'Unknown';
     document.getElementById('game-detail-date').textContent = game.date ? new Date(game.date).toLocaleDateString() : '-';
 
