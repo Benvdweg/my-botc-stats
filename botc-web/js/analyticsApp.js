@@ -803,8 +803,9 @@ function showGameHistory(title, badge, games) {
                 for (const f of (g.modifiers.fabled || [])) modTags.push(f.replace(/_/g, ' '));
                 for (const l of (g.modifiers.lorics || [])) modTags.push(l.replace(/_/g, ' '));
             }
+            const episodeDisplay = g.episode_title || `#${g.game_id}`;
             row.innerHTML = `
-                <td>#${g.game_id}</td>
+                <td>${episodeDisplay}</td>
                 <td>${g.date ? new Date(g.date).toLocaleDateString() : '-'}</td>
                 <td class="${g.winning_team === 'Good' ? 'good-text' : 'evil-text'}">${g.winning_team}</td>
                 <td>${(g.story_teller || '-').replace(/_/g, ' ').replace(/\+/g, ', ')}</td>
