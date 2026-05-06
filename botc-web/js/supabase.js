@@ -65,7 +65,8 @@ export async function fetchGames() {
         winning_team: game.winning_team,
         game_mode: game.game_mode,
         story_teller: game.story_teller,
-        modifiers: game.modifiers || null
+        modifiers: game.modifiers || null,
+        episode_title: game.episode_title
     }));
 }
 
@@ -125,7 +126,8 @@ export async function submitGame(gameData, code) {
             winning_team: gameData.winning_team,
             game_mode: gameData.game_mode,
             story_teller: gameData.story_teller,
-            modifiers: gameData.modifiers
+            modifiers: gameData.modifiers,
+            episode_title: gameData.episode_title
         })
         .select()
         .single();
@@ -232,7 +234,7 @@ export async function searchGames(query) {
     // Build search - try game_id first if it's a number
     let searchQuery = supabase
         .from('games')
-        .select('game_id, date, game_mode, story_teller, winning_team')
+        .select('game_id, date, game_mode, story_teller, winning_team, episode_title')        
         .order('game_id', { ascending: false })
         .limit(20);
 
@@ -298,7 +300,8 @@ export async function updateGame(gameId, gameData, code) {
             winning_team: gameData.winning_team,
             game_mode: gameData.game_mode,
             story_teller: gameData.story_teller,
-            modifiers: gameData.modifiers
+            modifiers: gameData.modifiers,
+            episode_title: gameData.episode_title
         })
         .eq('game_id', gameId)
         .select()
