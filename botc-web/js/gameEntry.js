@@ -30,6 +30,7 @@ let scriptsCache = null;
 let modal, codeStep, formStep, codeInput, verifyBtn, codeError;
 let team1Input, team2Input, evilTeamRadios, winnerRadios;
 let scriptSelect, storytellerInput, fabledInput, loricsInput, submitBtn, deleteGameBtn, submitError, submitSuccess;
+let episodeTitleInput;
 let formTitle, formSubtitle;
 
 // DOM Elements - Game Search Modal
@@ -64,6 +65,7 @@ export function initGameEntry(onGameAdded, playerNames) {
     storytellerInput = document.getElementById('storyteller-input');
     fabledInput = document.getElementById('fabled-input');
     loricsInput = document.getElementById('lorics-input');
+    episodeTitleInput = document.getElementById('episode-title-input');    
     submitBtn = document.getElementById('submit-game-btn');
     deleteGameBtn = document.getElementById('delete-game-btn');
     submitError = document.getElementById('submit-error');
@@ -536,13 +538,16 @@ async function submitGameForm() {
         ? { fabled, lorics }
         : null;
 
+    const episodeTitle = episodeTitleInput.value.trim();
+
     // Build game data
     const gameData = {
         players: [...team1Players, ...team2Players],
         winning_team: winningTeam,
         game_mode: scriptSelect.value,
         story_teller: storyteller,
-        modifiers
+        modifiers,
+        episode_title: episodeTitle || null
     };
 
     // Submit or Update
@@ -598,6 +603,7 @@ function clearForm() {
     storytellerInput.value = '';
     fabledInput.value = '';
     loricsInput.value = '';
+    episodeTitleInput.value = '';
 }
 
 /**
@@ -762,8 +768,8 @@ async function performGameSearch() {
 
                 const gameIdSpan = document.createElement('span');
                 gameIdSpan.className = 'game-result-id';
-                gameIdSpan.textContent = `Game #${game.game_id}`;
-
+                gameIdSpan.textContent = game.episode_title || `Game #${game.game_id}`;
+                
                 const winnerSpan = document.createElement('span');
                 winnerSpan.className = `game-result-winner ${(game.winning_team || '').toLowerCase()}`;
                 winnerSpan.textContent = `${game.winning_team} Won`;
@@ -878,6 +884,8 @@ function populateFormWithGame(game) {
 
     // Set storyteller
     storytellerInput.value = game.story_teller || '';
+
+    episodeTitleInput.value = game.episode_title || '';
 
     // Set modifiers
     if (game.modifiers) {
